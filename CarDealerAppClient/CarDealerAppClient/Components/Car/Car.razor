@@ -1,0 +1,44 @@
+﻿@page "/car"
+@using Blazorise
+@using Blazorise.DataGrid
+@using CarDealerAppClient.Models.Cars;
+@using CarDealerAppClient.ViewModels.Cars;
+@using System.ComponentModel;
+@inject ICarViewModel viewModel
+
+
+<h1>Car</h1>
+<DataGrid TItem="CarModel"
+          Data="@viewModel.Cars"
+          @bind-SelectedRow="@viewModel.SelectedCar"
+          Responsive>
+    <DataGridColumn Field="@nameof(CarModel.CarId)" Caption="Car Id" Sortable="false" />
+    <DataGridColumn Field="@nameof(CarModel.CarName)" Caption="Car Name" Editable />
+    <DataGridColumn Field="@nameof(CarModel.CarDescription)" Caption="Car Description" Editable />
+    <DataGridColumn Caption="Car details">
+        <DisplayTemplate>
+            <Button Color="Color.Primary" Clicked="@(async () => await viewModel.NavigateToCarDetails(context.CarId.ToString()))">
+                Details
+            </Button>
+        </DisplayTemplate>
+    </DataGridColumn>
+</DataGrid>
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        viewModel.PropertyChanged += OnPropertyChangedHandler;
+
+        await base.OnInitializedAsync();
+    }
+    async void OnPropertyChangedHandler(object sender, PropertyChangedEventArgs e)
+    {
+        await InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
+    }
+}
+
+

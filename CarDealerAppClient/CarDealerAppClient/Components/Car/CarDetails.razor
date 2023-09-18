@@ -1,0 +1,104 @@
+﻿@page "/cardetails/{CarId}"
+@using Blazorise
+@using CarDealerAppClient.ViewModels.Cars;
+@using System.ComponentModel;
+@inject ICarDetailsViewModel viewModel
+
+
+<div class="car-details">
+    <h3 class="car-details__title">Car Details</h3>
+
+    <div class="car-details__container">
+        <div class="car-details__row">
+            <div class="car-details__info">
+                <div class="car-details__item">
+                    <span class="car-details__label">Car ID:</span>
+                    <span class="car-details__value">@viewModel.Car.CarId</span>
+                </div>
+                <div class="car-details__item">
+                    <span class="car-details__label">Car Name:</span>
+                    <span class="car-details__value">@viewModel.Car.CarName</span>
+                </div>
+                <div class="car-details__item">
+                    <span class="car-details__label">Car Description:</span>
+                    <span class="car-details__value">@viewModel.Car.CarDescription</span>
+                </div>
+            </div>
+        </div>
+        <img class="car-details__image" src="@viewModel.Car.CarImage" alt="Car Image" />
+    </div>
+</div>
+
+<Button Color="Color.Primary" Clicked="@(() => viewModel.NavigateToCar())">Powrót do listy samochodów</Button>
+
+
+@code {
+    [Parameter]
+    public string CarId{ get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        viewModel.PropertyChanged += OnPropertyChangedHandler;
+
+        await base.OnInitializedAsync();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await viewModel.GetCarById(CarId);
+    }
+
+    async void OnPropertyChangedHandler(object sender, PropertyChangedEventArgs e)
+    {
+        await InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
+    }
+}
+
+<style>
+    .car-details {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .car-details__title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .car-details__container {
+        margin-top: 20px;
+    }
+
+    .car-details__row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .car-details__label {
+        width: 100px;
+        font-weight: bold;
+        color: #777;
+    }
+
+    .car-details__value {
+        margin-left: 10px;
+        color: #444;
+    }
+
+    .car-details__image {
+        max-width: 500px;
+        height: auto;
+        max-height: 300px;
+        object-fit: contain;
+    }
+</style>
