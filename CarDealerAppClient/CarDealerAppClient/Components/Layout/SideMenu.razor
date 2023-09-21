@@ -4,8 +4,8 @@
     <BarBrand>
         <BarItem>
             <BarLink To="">
-                <BarIcon IconName="customIcon" />
-                CarDealerAppClient
+                <BarIcon IconName="IconName.Home" />
+                  Strona główna
             </BarLink>
         </BarItem>
     </BarBrand>
@@ -13,14 +13,28 @@
         <BarStart>
             <BarItem>
                 <BarLink To="/car">
-                    <BarIcon IconName="IconName.Dashboard" />
-                    CarDealer
+                    <BarIcon IconName="IconName.ShuttleVan" />
+                    Zarządzanie samochodami
                 </BarLink>
             </BarItem>
         </BarStart>
+        <BarEnd>
+            <BarItem>
+                <BarLink To="/user">
+                    <BarIcon IconName="IconName.User" />
+                    Konto
+                </BarLink>
+            </BarItem>
+            <BarItem>
+                <BarLink To="/login">
+                    <BarIcon IconName="IconName.Unlock" />
+                    Wyloguj
+                </BarLink>
+            </BarItem>
+        </BarEnd>
     </BarMenu>
 </Bar>
 @code {
 
-    RenderFragment customIcon =@<img src="/car_logo2.jpg" style="width:32px; height: 32px;"/>;
+    //RenderFragment customIcon =@<img src="/car_logo2.jpg" style="width:32px; height: 32px;"/>;
 }

@@ -12,15 +12,15 @@
         <div class="car-details__row">
             <div class="car-details__info">
                 <div class="car-details__item">
-                    <span class="car-details__label">Car ID:</span>
+                    <span class="car-details__label">ID samochodu:</span>
                     <span class="car-details__value">@viewModel.Car.CarId</span>
                 </div>
                 <div class="car-details__item">
-                    <span class="car-details__label">Car Name:</span>
+                    <span class="car-details__label">Nazwa samochodu:</span>
                     <span class="car-details__value">@viewModel.Car.CarName</span>
                 </div>
                 <div class="car-details__item">
-                    <span class="car-details__label">Car Description:</span>
+                    <span class="car-details__label">Opis samochodu:</span>
                     <span class="car-details__value">@viewModel.Car.CarDescription</span>
                 </div>
             </div>
@@ -29,7 +29,13 @@
     </div>
 </div>
 
-<Button Color="Color.Primary" Clicked="@(() => viewModel.NavigateToCar())">Powrót do listy samochodów</Button>
+<Field Flex="Flex.JustifyContent.Between">
+    <Button Color="Color.Light" Clicked="@(() => viewModel.NavigateToCar())">Powrót do listy samochodów</Button>
+    <Div>
+        <Button Color="Color.Danger" Clicked="@(() => viewModel.DeleteCarById(CarId))">Usuń samochód</Button>
+        <Button Color="Color.Primary" Clicked="@(() => viewModel.NavigateToCar())">Edytuj samochód</Button>
+    </Div>
+</Field>
 
 
 @code {

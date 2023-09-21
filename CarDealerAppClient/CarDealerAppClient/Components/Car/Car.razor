@@ -8,6 +8,9 @@
 
 
 <h1>Car</h1>
+
+<Button Color="Color.Success" Outline Clicked="@(() => ShowModal() )">Dodaj samochód</Button>
+
 <DataGrid TItem="CarModel"
           Data="@viewModel.Cars"
           @bind-SelectedRow="@viewModel.SelectedCar"
@@ -24,13 +27,41 @@
     </DataGridColumn>
 </DataGrid>
 
-@code {
+ <Modal @ref="modalRef">
+     <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Dodaj samochód</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalBody>
+            <Field>
+                <FieldLabel>Nazwa samochodu</FieldLabel>
+                <TextEdit Placeholder="Wpisz nazwę samochodu..." @bind-Text="viewModel.AddCarCommand.CarName" />
+            </Field>
+            <Field>
+                <FieldLabel>Opis samochodu</FieldLabel>
+                <TextEdit Placeholder="Wpisz opis samochodu..." @bind-Text="viewModel.AddCarCommand.CarDescription" />
+
+            </Field>       
+            <Field>
+                <FieldLabel>Zdjęcie samochodu</FieldLabel>
+                <TextEdit Placeholder="Wpisz link zdjęcia samochodu..." @bind-Text="viewModel.AddCarCommand.CarImage" />
+            </Field>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Light" Clicked="@HideModal">Zamknij</Button>
+            <Button Color="Color.Primary" Clicked="@(() => { viewModel.AddCar(); HideModal();})">Dodaj samochód</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+ @code {
 
     protected override async Task OnInitializedAsync()
     {
         viewModel.PropertyChanged += OnPropertyChangedHandler;
 
-        await base.OnInitializedAsync();
+        await viewModel.InitializeAsync();
     }
     async void OnPropertyChangedHandler(object sender, PropertyChangedEventArgs e)
     {
@@ -38,6 +69,18 @@
         {
             StateHasChanged();
         });
+    }
+
+    private Modal modalRef;
+
+    private Task ShowModal()
+    {
+        return modalRef.Show();
+    }   
+    
+    private Task HideModal()
+    {
+        return modalRef.Hide();
     }
 }
 

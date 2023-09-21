@@ -1,0 +1,23 @@
+﻿@page "/login"
+@using CarDealerAppClient.ViewModels.Login;
+@inject ILoginViewModel viewModel
+
+<Container Class="d-flex justify-content-center align-items-center" Style="height: 50vh;">
+    <Card Style="width: 350px;">
+        <CardHeader Class="text-center">
+            <h4>Logowanie</h4>
+        </CardHeader>
+        <CardBody>
+            <Field>
+                <FieldLabel>Login:</FieldLabel>
+                <TextEdit @bind-Text="viewModel.Username" Placeholder="Wprowadź nazwę użytkownika" />
+            </Field>
+            <Field>
+                <FieldLabel>Hasło:</FieldLabel>
+                <TextEdit @bind-Text="viewModel.Password" Placeholder="Wprowadź hasło" />
+            </Field>
+
+            <Button Color="Color.Primary" Class="btn-block mt-4" Clicked="@(async () => await viewModel.NavigateToHome())">Zaloguj</Button>
+        </CardBody>
+    </Card>
+</Container>
