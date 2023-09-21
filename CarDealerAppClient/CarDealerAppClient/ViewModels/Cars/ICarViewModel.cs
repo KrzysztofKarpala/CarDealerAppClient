@@ -13,5 +13,6 @@ namespace CarDealerAppClient.ViewModels.Cars
         Task AddCar();
         Task NavigateToCarDetails(string id);
         public event PropertyChangedEventHandler PropertyChanged;
+        Task InitializeAsync();
     }
 }

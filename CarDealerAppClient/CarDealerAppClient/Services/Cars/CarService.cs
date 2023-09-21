@@ -24,6 +24,15 @@ namespace CarDealerAppClient.Services.Cars
             }
         }
 
+        public async Task DeleteCarAsync(string carId)
+        {
+            HttpResponseMessage response = await _httpClient.DeleteAsync($"api/v1/cars/deletecar?carId={carId}");
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException();
+            }
+        }
+
         public async Task<List<CarModel>> GetAllCarsAsync()
         {
             try

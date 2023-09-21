@@ -15,11 +15,20 @@ namespace CarDealerAppClient.ViewModels.Cars
 
         public CarModel Car { get; set; } = new CarModel();
 
+        public async Task DeleteCarById(string id)
+        {
+            await _carService.DeleteCarAsync(id);
+            OnPropertyChanged(nameof(Car));
+            await NavigateToCar();
+        }
+
         public async Task GetCarById(string id)
         {
             Car = await _carService.GetCarAsync(id);
             OnPropertyChanged(nameof(Car));
         }
+
+
 
         public async Task NavigateToCar()
         {

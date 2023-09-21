@@ -7,6 +7,7 @@ namespace CarDealerAppClient.ViewModels.Cars
     {
         CarModel Car { get; set; }
         Task GetCarById(string id);
+        Task DeleteCarById(string id);
         Task NavigateToCar();
         public event PropertyChangedEventHandler PropertyChanged;
     }

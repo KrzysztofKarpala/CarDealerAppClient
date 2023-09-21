@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealerAppClient", "CarDealerAppClient\CarDealerAppClient\CarDealerAppClient.csproj", "{ED75B5F6-0933-4D76-8DCF-247A120249E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealerAppClient", "CarDealerAppClient\CarDealerAppClient\CarDealerAppClient.csproj", "{ED75B5F6-0933-4D76-8DCF-247A120249E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

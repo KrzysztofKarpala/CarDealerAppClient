@@ -17,13 +17,17 @@ namespace CarDealer.Client.ViewModels.Cars
         public CarViewModel(INavigationService navigationService, ICarService carService) : base(navigationService)
         {
             _carService = carService;
-            LoadCars();
+        }
+        public async Task InitializeAsync()
+        {
+            await LoadCars();
         }
 
         public async Task LoadCars()
         {
             try
             {
+                Cars.Clear();
                 var cars = await _carService.GetAllCarsAsync();
                 foreach (var car in cars)
                 {

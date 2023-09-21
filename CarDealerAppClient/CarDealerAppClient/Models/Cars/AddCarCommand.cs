@@ -2,6 +2,8 @@
 {
     public class AddCarCommand
     {
-        public CarModel Car { get; set; }
+        public string CarName { get; set; }
+        public string CarDescription { get; set; }
+        public string CarImage { get; set; }
     }
 }
