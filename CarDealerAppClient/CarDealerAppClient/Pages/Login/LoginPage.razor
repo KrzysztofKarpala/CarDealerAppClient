@@ -11,11 +11,11 @@
             <CardBody>
                 <Field>
                     <FieldLabel>Login:</FieldLabel>
-                    <TextEdit @bind-Text="viewModel.Username" Placeholder="Wprowadź nazwę użytkownika" />
+                    <TextEdit @bind-Text="viewModel.Login.Username" Placeholder="Wprowadź nazwę użytkownika" />
                 </Field>
                 <Field>
                     <FieldLabel>Hasło:</FieldLabel>
-                    <TextEdit @bind-Text="viewModel.Password" Placeholder="Wprowadź hasło" />
+                    <TextEdit @bind-Text="viewModel.Login.Password" Placeholder="Wprowadź hasło" />
                 </Field>
                 <Field>
                     <Link To="/password/recovery">
