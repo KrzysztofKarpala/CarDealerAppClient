@@ -1,9 +1,10 @@
-﻿namespace CarDealerAppClient.ViewModels.Login
+﻿using CarDealerAppClient.Models.Login;
+
+namespace CarDealerAppClient.ViewModels.Login
 {
     public interface ILoginViewModel
     {
-        string Username { get; set; }
-        string Password { get; set; }
+        public LoginModel Login { get; set; }
         Task NavigateToHome();
     }
 }
