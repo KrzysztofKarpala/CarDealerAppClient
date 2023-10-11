@@ -15,5 +15,10 @@ namespace CarDealerAppClient.ViewModels.Login
         {
             await _navigationService.NavigateAsync("/");
         }
+
+        public async Task NavigateToRegistration()
+        {
+            await _navigationService.NavigateAsync("/registration");
+        }
     }
 }

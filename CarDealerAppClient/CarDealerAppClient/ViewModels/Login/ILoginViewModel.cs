@@ -6,5 +6,6 @@ namespace CarDealerAppClient.ViewModels.Login
     {
         public LoginModel Login { get; set; }
         Task NavigateToHome();
+        Task NavigateToRegistration();
     }
 }
