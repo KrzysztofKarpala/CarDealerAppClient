@@ -11,9 +11,6 @@ namespace CarDealerAppClient.ViewModels.User
         public UserViewModel(INavigationService navigationService) : base(navigationService)
         {
         }
-        public string OldPassword { get; set; }
-        public string NewPassword { get; set; }
-        public string RepeatedNewPassword { get; set; }
         public Validations FluentValidations { get; set; }
         public PasswordChangeModel PasswordChange { get; set; } = new PasswordChangeModel();
 

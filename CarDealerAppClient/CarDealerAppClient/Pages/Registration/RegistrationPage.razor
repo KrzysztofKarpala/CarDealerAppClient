@@ -1,0 +1,61 @@
+﻿@page "/registration"
+@using Blazorise.FluentValidation;
+@using CarDealerAppClient.ViewModels.Registration;
+@inject IRegistrationViewModel viewModel;
+
+<Container Class="d-flex justify-content-center align-items-center" Style="height: 80vh;">
+    <CardDeck>
+        <Card Style="width: 400px;">
+            <CardHeader Class="text-center">
+                <h4>Rejestracja</h4>
+            </CardHeader>
+            <CardBody>
+                <Validations @ref="viewModel.FluentValidations" Mode="ValidationMode.Manual" Model="viewModel.Registration" HandlerType="typeof(FluentValidationHandler)">
+                    <Validation>
+                        <Field>
+                            <FieldLabel>Email:</FieldLabel>
+                            <TextEdit Width="Width.Is50" Placeholder="Wpisz adres email" @bind-Text="viewModel.Registration.Email">
+                                <Feedback>
+                                    <ValidationError />
+                                </Feedback>
+                            </TextEdit>
+                        </Field>
+                        <Field>
+                            <FieldLabel>Login:</FieldLabel>
+                            <TextEdit @bind-Text="viewModel.Registration.Login" Placeholder="Wprowadź login">
+                                <Feedback>
+                                    <ValidationError />
+                                </Feedback>
+                            </TextEdit>
+                        </Field>
+                        <Field>
+                            <FieldLabel>Hasło:</FieldLabel>
+                            <TextEdit @bind-Text="viewModel.Registration.Password" Placeholder="Wprowadź hasło">
+                                <Feedback>
+                                    <ValidationError />
+                                </Feedback>
+                            </TextEdit>
+                        </Field>
+                        <Field>
+                            <FieldLabel>Imię i nazwisko:</FieldLabel>
+                            <TextEdit @bind-Text="viewModel.Registration.Name" Placeholder="Wprowadź imię i nazwisko">
+                                <Feedback>
+                                    <ValidationError />
+                                </Feedback>
+                            </TextEdit>
+                        </Field>
+                        <Field>
+                            <FieldLabel>Numer telefonu:</FieldLabel>
+                            <TextEdit @bind-Text="viewModel.Registration.PhoneNumber" Placeholder="Wprowadź numer telefonu">
+                                <Feedback>
+                                    <ValidationError />
+                                </Feedback>
+                            </TextEdit>
+                        </Field>
+                    </Validation>
+                </Validations>
+                <Button Color="Color.Primary" Class="btn-block mt-4" Clicked="@(async () => await viewModel.NewUserRegistration())">Zarejestruj się</Button>
+            </CardBody>
+        </Card>
+    </CardDeck>
+</Container>
